@@ -16,3 +16,5 @@ MILESTONE 2
 
 Useremo il framework vue!
 
+MILESTONE 1
+- 

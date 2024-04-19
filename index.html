@@ -28,21 +28,11 @@
         </div>
 
         <!-- attività -->
-        <div class="tasks">
+        <div id="tasks">
               <ul class="inner-list">
-                <li class="done">
-                  <span class="circle checked"></span>Recruiting blog post
-                </li>
-                <li class="done">
-                  <span class="circle checked"></span>Mobile app luaunch
-                </li>
-                <li>
-                  <span class="circle delete"></span>Interview John H.
-                </li>
-                <li class="done">
-                  <span class="circle checked"></span>Summit update to mobile
-                  storefronts 
-                </li>
+               <li v-for="curTask in task">
+                <strong>{{curTask.text}}</strong>
+               </li>
               </ul>
             </li>
           </ul>
@@ -51,5 +41,6 @@
       <!-- /container principale -->
 
     </main>
+    <script src="./js/script.js"></script>
   </body>
 </html>
