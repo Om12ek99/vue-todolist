@@ -5,19 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Toboolist</title>
+    <!-- link css -->
     <link rel="stylesheet" href="css/style.css" />
+    <!-- link Vue -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   </head>
   <body>
+    <!-- header -->
     <header>
       <img id="logo" src="img/logo.png" alt="logo boolean" />
       <span id="logo-text">Toboolist</span>
     </header>
+    <!-- -header -->
     <main>
+      <!-- container principale -->
       <div class="container">
         <div class="top">
+          <!-- input di aggiunta task -->
+          <!-- qui scriveremo le task che andranno poi in un oggetto nella sezione attivitò -->
           <input type="text" placeholder="es: Fare la spesa..." />
           <button type="button" class="btn btn-filled">Add Task</button>
         </div>
+
+        <!-- attività -->
         <div class="tasks">
               <ul class="inner-list">
                 <li class="done">
@@ -38,6 +48,8 @@
           </ul>
         </div>
       </div>
+      <!-- /container principale -->
+
     </main>
   </body>
 </html>
