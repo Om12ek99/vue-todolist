@@ -31,7 +31,9 @@
         <div id="tasks">
               <ul class="inner-list">
                <li v-for="curTask in task">
-                <strong>{{curTask.text}}</strong>
+                <span id="check"></span>
+                <p id="text">{{curTask.text}}</p>
+                
                </li>
               </ul>
             </li>
