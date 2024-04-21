@@ -5,44 +5,65 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Toboolist</title>
-    <!-- link css -->
+    <!-- style -->
     <link rel="stylesheet" href="css/style.css" />
-    <!-- link Vue -->
+    <!-- vue js -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   </head>
   <body>
-    <!-- header -->
     <header>
       <img id="logo" src="img/logo.png" alt="logo boolean" />
       <span id="logo-text">Toboolist</span>
     </header>
-    <!-- -header -->
     <main>
-      <!-- container principale -->
+      <!-- dynamic container -->
       <div class="container">
         <div class="top">
-          <!-- input di aggiunta task -->
-          <!-- qui scriveremo le task che andranno poi in un oggetto nella sezione attivitò -->
-          <input type="text" placeholder="es: Fare la spesa..." />
-          <button type="button" class="btn btn-filled">Add Task</button>
+          <!-- keyup to listen button enter on the keyboard -->
+          <!-- v-model to connect the input text to the variable -->
+          <input
+            @keyup.enter="addTodo"
+            type="text"
+            placeholder="es: Fare la spesa..."
+            v-model="newTodo.text">
+          <!-- addTodo to save the list in local storage -->
+          <button 
+                type="button"
+                class="btn btn-filled"
+                @click="addTodo">Add Task</button>
         </div>
-
-        <!-- attività -->
-        <div id="tasks">
-              <ul class="inner-list">
-               <li v-for="curTask in task">
-                <span id="check"></span>
-                <p id="text">{{curTask.text}}</p>
-                
-               </li>
-              </ul>
+        <div class="tasks">
+          <!-- when the list is empty show the message -->
+          <h2 
+            v-show="todoList.length === 0"
+            style="text-align: center;">la tua lista è vuota</h2>
+          <ul class="inner-list">
+            <!-- v-for insert elements into the page -->
+            <li
+              v-for="curElem,index in todoList">
+              <!-- the class dynamics assign the 3 classes depending on the value of the done variable of the current object -->
+              <!-- @click change invert done value -->
+              <span
+                class="circle"
+                :class ="{'done': curElem.done === true},{'checked' : curElem.done === true},{'delete' : curElem.done === false}"
+                @click="curElem.done = !curElem.done">
+                {{curElem.text}}
+              </span>
+              <!-- vshow show button when tash is done -->
+              <!-- deleToto remove todo of the list and refresh local storage -->
+              <div id="deleteBtn"
+                v-show="curElem.done === true"
+                @click="deleteTodo(index)"
+                class="rounded"
+                >X
+              </div>
             </li>
           </ul>
         </div>
       </div>
-      <!-- /container principale -->
-
+      <!-- /dynamic container -->
     </main>
+    <!-- script -->
     <script src="./js/script.js"></script>
   </body>
 </html>
